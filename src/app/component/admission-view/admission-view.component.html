@@ -1,0 +1,63 @@
+
+<div class="card">
+  <p-table #dt1 [value]="admissionService.admissions"  [tableStyle]="{ 'min-width': '50rem' }"
+           [globalFilterFields]="['Student-Name', 'Course-Name', 'Start-Date', 'Start-Time','End-Time','Action']"
+           [rows]="5"
+           [showCurrentPageReport]="true"
+           [rowsPerPageOptions]="[10, 25, 50]"
+           [paginator]="true"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="Studnet-Name">Studnet-Name <p-sortIcon field="Course-Name"></p-sortIcon></th>
+        <th pSortableColumn="Course-Name">Course-Name <p-sortIcon field="Course-fees"></p-sortIcon></th>
+        <th pSortableColumn="Start-Date">Start-Date<p-sortIcon field="Course-Status"></p-sortIcon></th>
+        <th pSortableColumn="Start-Time">Start-time<p-sortIcon field="Course-Duartion"></p-sortIcon></th>
+        <th pSortableColumn="End-Time">End-TIme<p-sortIcon field="End-Time"></p-sortIcon></th>
+<!--        <th pSortableColumn="Action">Action<p-sortIcon field="Action"></p-sortIcon></th>-->
+        <th>Action</th>
+      </tr>
+      <tr>
+        <th>
+          <p-columnFilter type="text" field=""></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="numeric" field=""></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="numeric" field="_admission_start_date"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="numeric" field="_leture_start_date"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="numeric" field="_leture_end_date"></p-columnFilter>
+        </th>
+<!--        <th>-->
+<!--          <p-columnFilter type="text" field="_leture_start_date"></p-columnFilter>-->
+<!--        </th>-->
+      </tr>
+
+    </ng-template>
+    <ng-template pTemplate="body" let-adm>
+      <tr>
+        <td>{{ adm._courseName}}</td>
+        <td>{{ adm._courseFees}}</td>
+        <td>{{ adm._admission_start_date}}</td>
+        <td>{{ adm._leture_start_date}} </td>
+        <td>{{adm._leture_end_date}}</td>
+        <td class="flex gap-1">
+          <p-button icon="pi pi-trash" [rounded]="true" severity="danger" ></p-button>
+          <p-button icon="pi pi-pencil" [rounded]="true" severity="warning"></p-button>
+
+        </td>
+      </tr>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="4">No customers found.</td>
+        </tr>
+      </ng-template>
+    </ng-template>
+  </p-table>
+</div>

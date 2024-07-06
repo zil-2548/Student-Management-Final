@@ -1,0 +1,168 @@
+<h1 class="mt-2 text-center">Student Entry Form </h1>
+<div class="h-screen w-screen   m-0 p-0 flex justify-content-center  ">
+
+  <div class="h-screen w-9  border-2 border-round  ">
+    <form [formGroup]="Studentgroup" >
+    <div class="st-name m-4 flex justify-content-around  ">
+      <p-iconField iconPosition="left">
+        <p-inputIcon styleClass="pi pi-user" />
+        <input type="text" pInputText placeholder="Student Name" formControlName="_stdent_name" class="font-bold"/>
+      </p-iconField>
+      <p-iconField iconPosition="left">
+        <p-inputIcon styleClass="pi pi-user" />
+        <input type="text" pInputText placeholder="Stundet-Father-Name" formControlName="_student_father_name" class="font-bold" />
+      </p-iconField>
+      <p-iconField iconPosition="left">
+        <p-inputIcon styleClass="pi pi-user" />
+        <input type="text" pInputText placeholder="Student-Last-Name" formControlName="_student_last_name" class="font-bold" />
+      </p-iconField>
+    </div>
+    <div class="mt-5 Student-Ditled ">
+      <div class="st-name m-4  flex justify-content-around  ">
+        <p-iconField iconPosition="left">
+          <p-inputIcon styleClass="pi pi-file" />
+          <input type="number" pInputText class="font-bold" formControlName="_student_10_marks" placeholder="10 Marks" />
+        </p-iconField>
+        <p-iconField iconPosition="left">
+          <p-inputIcon styleClass="pi pi-file " />
+          <input type="number" pInputText class="font-bold" formControlName="_student_12_marks" placeholder="12 Marks" />
+        </p-iconField>
+        <p-iconField iconPosition="left">
+          <p-inputIcon styleClass="pi pi-phone" />
+          <input type="number" pInputText class="font-bold" formControlName="_student_phone_number" placeholder="Student-Number" />
+        </p-iconField>
+      </div>
+    </div>
+    <div class="mt-5 Father-Ditile">
+      <div class="st-name m-4  flex justify-content-around  ">
+        <p-iconField iconPosition="left">
+          <p-inputIcon styleClass="pi pi-file" />
+          <input type="text" pInputText class="font-bold" formControlName="_father_egucation" placeholder="Father-Egucation" />
+        </p-iconField>
+        <p-iconField iconPosition="left">
+          <p-inputIcon styleClass="pi pi-phone " />
+          <input type="number" pInputText class="font-bold" formControlName="_father_phone_number" placeholder="Father-Phone-number" />
+<!--          <input type="email" pInputText class="font-bold" formControlName="_father_email" placeholder="Father-Email" />-->
+        </p-iconField>
+        <p-iconField iconPosition="left">
+          <p-inputIcon styleClass="pi pi-phone" />
+          <input type="number" pInputText class="font-bold" formControlName="_father_phone_number" placeholder="Second-Phone-number" />
+        </p-iconField>
+      </div>
+    </div>
+
+<!--      Ditile about address-->
+
+      <div class="mt-5 Addres">
+        <div class="st-name m-4  flex justify-content-around  ">
+          <p-iconField iconPosition="left">
+            <p-inputIcon styleClass="pi pi-home" />
+            <input type="text" pInputText class="font-bold" formControlName="_father_egucation" placeholder="Building-Name-Or-No" />
+          </p-iconField>
+          <p-iconField iconPosition="left">
+            <p-inputIcon styleClass="pi pi-home" />
+            <input type="text" pInputText class="font-bold" formControlName="_father_egucation" placeholder="Street-Name" />
+          </p-iconField>
+          <p-iconField iconPosition="left">
+            <p-inputIcon styleClass="pi pi-home" />
+            <input type="text" pInputText class="font-bold" formControlName="_father_egucation" placeholder="Area-Name" />
+          </p-iconField>
+        </div>
+      </div>
+
+      <div class="mt-5 Addres-2">
+        <div class="st-name m-4  flex justify-content-around  ">
+          <p-iconField iconPosition="left">
+            <p-inputIcon styleClass="pi pi-home" />
+            <input type="text" pInputText class="font-bold" formControlName="_father_egucation" placeholder="City-Name" />
+          </p-iconField>
+          <p-iconField iconPosition="left">
+            <p-inputIcon styleClass="pi pi-home" />
+            <input type="number" pInputText class="font-bold" formControlName="_student_phone_number" placeholder="Pincode" />
+          </p-iconField>
+          <p-iconField iconPosition="left">
+            <p-inputIcon styleClass="pi pi-home" />
+            <input type="text" pInputText class="font-bold" formControlName="_father_egucation" placeholder="Country-Name" />
+          </p-iconField>
+        </div>
+      </div>
+
+<!--      student Bithdate Ditels-->
+
+      <div class="mt-5 ">
+        <div class="st-name m-4  flex justify-content-around  ">
+          <p-calendar
+
+              [showIcon]="true"
+              inputId="buttondisplay"
+              [showOnFocus]="false"
+            [inputStyle]="{'width':'195px'}"
+              placeholder="Birth date"
+              class="md:font-bold"
+          />
+
+          <p-iconField iconPosition="left">
+            <p-inputIcon styleClass="pi pi-home" />
+            <p-dropdown
+              [options]="cities"
+              formControlName="selectedCity"
+              optionLabel="name"
+              placeholder="Select a Gender"
+              [style]="{'width':'245px'}"
+            />
+<!--            <input type="number" pInputText class="font-bold" formControlName="_student_phone_number" placeholder="Pincode" />-->
+          </p-iconField>
+          <p-iconField iconPosition="left">
+            <p-inputIcon styleClass="pi pi-envelope" />
+            <input type="email"  pInputText class="font-bold" formControlName="_father_egucation" placeholder="Email" />
+          </p-iconField>
+        </div>
+      </div>
+
+<!--      upload photo and remark-->
+      <div class="mt-5 ">
+        <div class=" m-4 flex justify-content-between  ">
+          <p-fileUpload
+            mode="basic"
+            name="demo[]"
+            chooseIcon="pi pi-upload"
+            url="https://www.primefaces.org/cdn/api/upload.php"
+            accept="image/*" maxFileSize="1000000"
+            (onUpload)="onBasicUploadAuto($event)"
+            [auto]="true"
+            chooseLabel="Upload Photos"
+            [style]="{'width':'245px'}"
+          />
+
+<!--          <p-iconField iconPosition="left">-->
+<!--            <p-inputIcon styleClass="pi pi-home" />-->
+<!--            <p-dropdown-->
+<!--              [options]="cities"-->
+<!--              formControlName="selectedCity"-->
+<!--              optionLabel="name"-->
+<!--              placeholder="Select a Inquiry ref"-->
+<!--              [style]="{'width':'245px'}"-->
+<!--            />-->
+<!--            &lt;!&ndash;            <input type="number" pInputText class="font-bold" formControlName="_student_phone_number" placeholder="Pincode" />&ndash;&gt;-->
+<!--          </p-iconField>-->
+          <p-iconField iconPosition="left">
+            <p-inputIcon styleClass="pi pi-sitemap" />
+            <input type="text" pInputText class="font-bold" formControlName="_father_egucation" [style]="{'width':'100vh'}" placeholder="Remark" />
+          </p-iconField>
+        </div>
+      </div>
+
+<!--      buttone-->
+      <div class="buttone flex justify-content-center gap-5 mt-6 ">
+      <p-button label="Save" (click)="save()" />
+      <p-button label="Reset"  severity="danger" />
+
+    </div>
+    </form>
+
+
+  </div>
+<!--    <p-button label="Submit" />-->
+<!--    <p-button label="reset" />-->
+<!-- -->
+</div>

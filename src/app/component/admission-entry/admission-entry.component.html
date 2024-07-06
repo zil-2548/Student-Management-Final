@@ -1,0 +1,187 @@
+<h1 class="mt-2 text-center">Admission Entry Form </h1>
+<div class="h-screen w-screen   m-0 p-0 flex justify-content-center ">
+
+  <div class="h-30rem w-10  mt-4 border-2 border-round ">
+    <form [formGroup]="admissiongroup" >
+    <div class="st-name m-4 flex justify-content-around  ">
+
+      <p-dropdown
+
+        [options]="studentnames"
+        [(ngModel)]="selectedStudent"
+        optionLabel="_studentname"
+        [filter]="true"
+        filterBy="_studentname"
+        [showClear]="true"
+        placeholder="Select a Student"
+        [style]="{'width':'74vh'}"
+
+
+
+      >
+        <ng-template pTemplate="filter" let-options="options">
+          <div class="flex gap-1">
+            <div class="p-inputgroup" (click)="$event.stopPropagation()">
+              <span class="p-inputgroup-addon"><i class="pi pi-search"></i></span>
+              <input
+                type="text"
+                pInputText
+                placeholder="Filter"
+                [(ngModel)]="filterValue"
+                (keyup)="customFilterFunction($event, options)"
+
+              />
+            </div>
+            <button pButton icon="pi pi-times" (click)="resetFunction(options)"></button>
+          </div>
+        </ng-template>
+
+      </p-dropdown>
+
+<!--      SECLECT COURSE-->
+
+      <p-dropdown
+        [options]="couersnames"
+        [(ngModel)]="selectedCours"
+        optionLabel="_crname"
+        placeholder="Select a Cours"
+        formControlName="_admcr"
+        [style]="{'width':'74vh'}"
+      >
+
+      </p-dropdown>
+
+
+
+
+    </div>
+    <div class="st-name m-4 flex justify-content-around  ">
+
+      <p-calendar
+
+        [showIcon]="true"
+        inputId="buttondisplay"
+        [showOnFocus]="false"
+        [inputStyle]="{'width':'195px'}"
+        placeholder="Admission Start Date"
+        class="md:font-bold"
+        formControlName="_admission_start_date"
+
+      />
+
+      <p-calendar
+
+        [showIcon]="true"
+        inputId="buttondisplay"
+        [showOnFocus]="false"
+        [inputStyle]="{'width':'195px'}"
+        placeholder="Admission Due Date"
+        class="md:font-bold"
+        formControlName="_admission_due_date"
+      />
+
+      <p-calendar
+
+        [showIcon]="true"
+        inputId="buttondisplay"
+        [showOnFocus]="false"
+        [inputStyle]="{'width':'195px'}"
+        placeholder="Admission End Date"
+        class="md:font-bold"
+        formControlName="_admission_end_date"
+      />
+
+      <p-fileUpload
+        mode="basic"
+        name="demo[]"
+        chooseIcon="pi pi-upload"
+        url="https://www.primefaces.org/cdn/api/upload.php"
+        accept="image/*" maxFileSize="1000000"
+        (onUpload)="onBasicUploadAuto($event)"
+        [auto]="true"
+        chooseLabel="Id or Address Proof"
+        [style]="{'width':'245px'}"
+        formControlName="_idproof"
+      />
+
+
+    </div>
+    <div class="st-name m-4 flex justify-content-around  ">
+
+      <p-calendar
+
+        [iconDisplay]="'input'"
+        [showIcon]="true"
+        [timeOnly]="true"
+        [inputStyle]="{'width':'240px'}"
+        inputId="templatedisplay"
+        placeholder="Lecture Start Time"
+        formControlName="_leture_start_date"
+      >
+        <ng-template pTemplate="inputicon" let-clickCallBack="clickCallBack">
+          <i
+            class="pi pi-clock pointer-events-none pointer-events-none"
+            (click)="clickCallBack($event)">
+
+          </i>
+        </ng-template>  />
+      </p-calendar>
+      <p-calendar
+
+        [iconDisplay]="'input'"
+        [showIcon]="true"
+        [timeOnly]="true"
+        [inputStyle]="{'width':'240px'}"
+        inputId="templatedisplay"
+        placeholder="Lecture End Time"
+        formControlName="_leture_end_date"
+      >
+        <ng-template pTemplate="inputicon" let-clickCallBack="clickCallBack">
+          <i
+            class="pi pi-clock pointer-events-none pointer-events-none"
+            (click)="clickCallBack($event)">
+
+          </i>
+        </ng-template>  />
+      </p-calendar>
+
+      <p-inputNumber inputId="integeronly" placeholder= 'Diccount ' formControlName="_diccout" [inputStyle]="{'width':'240px'}"></p-inputNumber>
+
+      <p-inputNumber class="font-bold" mode="currency" inputId="currency-india" currency="INR" currencyDisplay="code" locale="en-IN" formControlName="_fees" placeholder="Fees" [inputStyle]="{'width':'240px'}"> </p-inputNumber>
+
+       </div>
+    <div class="st-name m-4 flex justify-content-around  ">
+
+      <p-dropdown
+        [options]="statse"
+        formControlName="_status"
+        optionLabel="name"
+        placeholder="Select a Status"
+        [style]="{'width':'245px'}"
+
+      />
+
+
+      <p-inputNumber inputId="integeronly" placeholder= 'NO of Days(in a week) ' formControlName="_number_of_week" [inputStyle]="{'width':'240px'}"></p-inputNumber>
+
+      <p-inputNumber inputId="integeronly" placeholder= 'Pending Fees' formControlName="_pending_fess" [inputStyle]="{'width':'240px'}"></p-inputNumber>
+
+      <p-dropdown
+        [options]="statse"
+        formControlName="_inquiry"
+        optionLabel="name"
+        placeholder="Select a Inquiry"
+        [style]="{'width':'245px'}"
+      />
+<!--      <p-inputNumber class="font-bold" mode="currency" inputId="currency-india" currency="INR" currencyDisplay="code" locale="en-IN" formControlName="_courseFees" placeholder="Fees" [inputStyle]="{'width':'240px'}"> </p-inputNumber>-->
+
+    </div>
+    <div class="buttone flex justify-content-center gap-5 mt-6 ">
+      <p-button label="Save" severity="primary" (click)="save()" />
+      <p-button label="Reset"  severity="danger" />
+
+    </div>
+    </form>
+  </div>
+
+</div>

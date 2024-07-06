@@ -1,0 +1,55 @@
+
+<div class="card">
+  <p-table #dt1 [value]="courseService.courses"  [tableStyle]="{ 'min-width': '50rem' }"
+           [globalFilterFields]="['Course-Name', 'Course-fees', 'Course-Status', 'Course-Duartion']"
+           [rows]="5"
+           [showCurrentPageReport]="true"
+           [rowsPerPageOptions]="[10, 25, 50]"
+           [paginator]="true"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="Course-Name">Course-Name <p-sortIcon field="Course-Name"></p-sortIcon></th>
+        <th pSortableColumn="Course-fees">Course-fees <p-sortIcon field="Course-fees"></p-sortIcon></th>
+        <th pSortableColumn="Course-Status">Course-Status<p-sortIcon field="Course-Status"></p-sortIcon></th>
+        <th pSortableColumn="Course-Duartion">Course-Duartion<p-sortIcon field="Course-Duartion"></p-sortIcon></th>
+        <th>Action</th>
+      </tr>
+      <tr>
+        <th>
+          <p-columnFilter type="text" field="_courseName"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="numeric" field="_courseFees"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="_courseStatus"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="_courseDuration"></p-columnFilter>
+        </th>
+        <th></th>
+      </tr>
+
+    </ng-template>
+    <ng-template pTemplate="body" let-course>
+      <tr>
+        <td>{{ course._courseName}}</td>
+        <td>{{ course._courseFees}} Rs</td>
+        <td>{{ course._courseStatus.name }}</td>
+        <td>{{ course._courseDuration}} Months</td>
+        <td class="flex gap-1">
+          <p-button icon="pi pi-trash" [rounded]="true" severity="danger"  ></p-button>
+          <p-button icon="pi pi-pencil" [rounded]="true" severity="warning"></p-button>
+
+        </td>
+      </tr>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="4">No customers found.</td>
+        </tr>
+      </ng-template>
+    </ng-template>
+  </p-table>
+</div>

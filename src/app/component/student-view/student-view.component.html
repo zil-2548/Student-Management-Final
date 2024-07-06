@@ -1,0 +1,55 @@
+
+<div class="card">
+  <p-table #dt1 [value]="studentService.student" [tableStyle]="{ 'min-width': '50rem' }"
+           [globalFilterFields]="['Student-Name', 'Student-10-Marks', 'Student-12-Marks', 'Student-Phone-Number']"
+           [rows]="5"
+           [showCurrentPageReport]="true"
+           [rowsPerPageOptions]="[10, 25, 50]"
+           [paginator]="true"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="Student-Name">Student-Name <p-sortIcon field="Student-Name"></p-sortIcon></th>
+        <th pSortableColumn="Student-10-Marks">Student-10-Marks <p-sortIcon field="Student-10-Marks"></p-sortIcon></th>
+        <th pSortableColumn="Student-12-Marks">Student-12-Marks<p-sortIcon field="Student-12-Marks"></p-sortIcon></th>
+        <th pSortableColumn="Student-Phone-Number">Student-Phone-Number<p-sortIcon field="Student-Phone-Number"></p-sortIcon></th>
+        <th>Action</th>
+      </tr>
+      <tr>
+        <th>
+          <p-columnFilter type="text" field="_stdent_name"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="numeric" field="_student_10_marks"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="numeric" field="_student_12_marks"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="numeric" field="_student_phone_number"></p-columnFilter>
+        </th>
+        <th></th>
+      </tr>
+
+    </ng-template>
+    <ng-template pTemplate="body" let-student>
+      <tr>
+        <td>{{ student._stdent_name}}</td>
+        <td>{{ student._student_10_marks}}</td>
+        <td>{{ student._student_12_marks }}</td>
+        <td>{{ student._student_phone_number }}</td>
+        <td class="flex gap-1">
+          <p-button icon="pi pi-trash" [rounded]="true" (click)="deleteStudent(student._id)" severity="danger" ></p-button>
+          <p-button icon="pi pi-pencil" [rounded]="true" (click)="updateStudent(student)" severity="warning"></p-button>
+
+        </td>
+      </tr>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="4">No customers found.</td>
+        </tr>
+      </ng-template>
+    </ng-template>
+  </p-table>
+</div>

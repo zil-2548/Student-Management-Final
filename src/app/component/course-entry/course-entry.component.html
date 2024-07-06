@@ -1,0 +1,86 @@
+<h1 class="mt-2 text-center">Course Entry Form </h1>
+<div class="h-screen w-screen   m-0 p-0 flex justify-content-center ">
+
+  <div class="h-30rem w-10  mt-4 border-2 border-round ">
+    <form [formGroup]="CourseGroup"   >
+      <div class="st-name m-4 flex justify-content-around  ">
+        <p-iconField iconPosition="left">
+          <p-inputIcon styleClass="pi pi-user" />
+          <input type="text" pInputText placeholder="Course Name" formControlName="_courseName"  class="font-bold crname"/>
+        </p-iconField>
+
+      </div>
+
+<!--      OVERVIEW-->
+      <div class="st-name m-4 flex justify-content-around  ">
+
+        <p-fileUpload
+          mode="basic"
+          name="demo[]"
+          chooseIcon="pi pi-upload"
+          url="https://www.primefaces.org/cdn/api/upload.php"
+          accept="image/*" maxFileSize="1000000"
+          (onUpload)="onBasicUploadAuto($event)"
+          [auto]="true"
+          chooseLabel="Course Overview"
+          [style]="{'width':'70vh'}"
+        />
+
+        <p-fileUpload
+          mode="basic"
+          name="demo[]"
+          chooseIcon="pi pi-upload"
+          url="https://www.primefaces.org/cdn/api/upload.php"
+          accept="image/*" maxFileSize="1000000"
+          (onUpload)="onBasicUploadAuto($event)"
+          [auto]="true"
+          chooseLabel="Course Description"
+          [style]="{'width':'70vh'}"
+        />
+
+      </div>
+      <div class="mt-5 Student-Ditled ">
+        <div class="st-name m-4  flex justify-content-around  ">
+          <p-iconField iconPosition="left">
+            <p-inputIcon styleClass="pi pi-calendar" />
+            <input type="number" pInputText class="font-bold" formControlName="_courseDuration" placeholder="Duration(in Months)" />
+          </p-iconField>
+          <p-iconField iconPosition="left">
+<!--            <p-inputIcon styleClass="pi pi-indian-rupee " />-->
+            <p-inputNumber class="font-bold" mode="currency" inputId="currency-india" currency="INR" currencyDisplay="code" locale="en-IN" formControlName="_courseFees" placeholder="Fees" > </p-inputNumber>
+          </p-iconField>
+          <p-iconField iconPosition="left">
+            <p-inputIcon styleClass="pi pi-phone" />
+            <p-dropdown
+              [options]="statse"
+              formControlName="_courseStatus"
+              optionLabel="name"
+              placeholder="Select a Status"
+              [style]="{'width':'245px'}"
+            />
+          </p-iconField>
+          <p-iconField iconPosition="left">
+            <p-inputIcon styleClass="pi pi-file" />
+            <p-dropdown
+              [options]="user"
+              formControlName="_courseUsers"
+              optionLabel="name"
+              placeholder="Select a Users"
+              [style]="{'width':'245px'}"
+            />
+<!--            <input type="number" pInputText class="font-bold" formControlName="_student_10_marks" placeholder="10 Marks" />-->
+          </p-iconField>
+        </div>
+      </div>
+
+      <div class="buttone flex justify-content-center gap-5 mt-6 ">
+        <p-button label="Save" severity="primary" (click)="save()"/>
+        <p-button label="Reset"  severity="danger" />
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
